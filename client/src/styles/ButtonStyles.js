@@ -26,3 +26,6 @@ justify-content:space-around;
 export const ButtonMen = styled(Button)`
     margin-right:12px;
 `
+export const ButtonFooter = styled(Button)`
+  
+`;
