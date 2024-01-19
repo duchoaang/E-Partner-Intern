@@ -10,8 +10,7 @@
 :root {
  --bg-color:  #272727;
  --text-color: #FFFFFF;
- 
-
+ --color-input: #3A3A3A;
  --text-mobile: 14px;
 }
 
@@ -29,3 +28,8 @@ ul {
     margin: 0;
     list-style: none;
 }
+input::placeholder {
+    
+    font-size: 16px;
+  }
+  

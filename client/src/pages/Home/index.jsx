@@ -10,8 +10,16 @@ import {
   ContentBody,
   BodyWrapper,
   Gender,
+  GenderTitle,
+  DetailsBody,
+  DobWrapper,
+  TallWrapper,
+  DetailsTittle,
+  WeightWrapper,
+  Input,
+  Label,Label2
 } from "@s/StyledHome";
-import { Button, ButtonWrapper } from "@s/ButtonStyles";
+import { Button, ButtonWrapper, ButtonMen } from "@s/ButtonStyles";
 const Home = () => {
   const id = 1;
   const [user, setUser] = useState({
@@ -46,7 +54,13 @@ const Home = () => {
       <header>
         <HeaderContainer>
           <HeaderLeft>
-            Xin chào,<NameUser>{user.name}</NameUser>
+            Xin chào,
+            <NameUser
+              color="
+#FF5C00"
+            >
+              {user.name}
+            </NameUser>
           </HeaderLeft>
           <HeaderRight>
             <Logo src={user.avatar}></Logo>
@@ -60,14 +74,46 @@ const Home = () => {
           bạn để có những bài tập phù hợp nhất nhé
         </ContentBody>
         <Gender>
-          <h2>Gender</h2>
+          <GenderTitle>Gender</GenderTitle>
           <ButtonWrapper>
-            <Button bg="#0352FE" color="#FFFFFF" genderMen={true} mr="20px">
-              Nam
-            </Button>
+            <ButtonMen bg="#0352FE">Nam</ButtonMen>
             <Button>Nữ</Button>
           </ButtonWrapper>
         </Gender>
+
+        <DetailsBody>
+          <DetailsTittle>Thông số cơ thể</DetailsTittle>
+
+          <DobWrapper>
+            <Input type="number" required="required" placeholder="Nhập"
+            ></Input>
+            <Label>
+              Năm sinh <span>*</span>
+            </Label>
+          </DobWrapper>
+          <TallWrapper>
+            <Input type="number" required="required" placeholder="Nhập"
+             pr="45px"
+            ></Input>
+            <Label>
+              Chiều cao <span>*</span>
+            </Label>
+            <Label2>cm</Label2>
+          </TallWrapper>
+          <WeightWrapper>
+            <Input
+                type="number"
+                required="required"
+                placeholder="Nhập"
+                pr="50px"
+            ></Input>
+            <Label2>kg</Label2>
+            <Label>
+              Cân nặng <span>*</span>
+            </Label>
+            
+          </WeightWrapper>
+        </DetailsBody>
       </BodyWrapper>
     </>
   );

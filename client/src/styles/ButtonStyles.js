@@ -9,7 +9,7 @@ export const Button = styled.button`
   gap: 10px;
 
   border: ${(props) => (props.genderMen ? "1px solid #B8E5FF" : "1px solid #484848")};
-  margin-right: ${(props) => (props.mr ? props.mr : '0px')};
+  
   border-radius:15px;
   outline: none;
   @media (max-width: 414px) {
@@ -23,3 +23,6 @@ justify-content:space-around;
   top: 194px;
   left: 16px;
 `;
+export const ButtonMen = styled(Button)`
+    margin-right:12px;
+`
