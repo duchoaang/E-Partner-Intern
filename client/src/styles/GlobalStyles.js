@@ -9,10 +9,10 @@ export const GlobalStyles = createGlobalStyle`
         body {
           padding:10px 10px;
           width: 100%;
-          height: 896px;
+          max-height: 896px;
           top: -448px;
           left: -1751px;
-
+         
         }
     }
 `;

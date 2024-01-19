@@ -1,6 +1,6 @@
 import APIs, { endpoints } from "@cf/APIs";
 import { useState, useEffect } from "react";
-import styled, { keyframes } from "styled-components";
+import { Link } from "react-router-dom";
 import {
   HeaderContainer,
   HeaderLeft,
@@ -17,16 +17,26 @@ import {
   DetailsTittle,
   WeightWrapper,
   Input,
-  Label,Label2
+  Label,
+  Label2,
+  FooterWrapper,
+  HomeWrapper,
 } from "@s/StyledHome";
-import { Button, ButtonWrapper, ButtonMen } from "@s/ButtonStyles";
+import {
+  Button,
+  ButtonWrapper,
+  ButtonMen,
+  ButtonFooter,
+} from "@s/ButtonStyles";
 const Home = () => {
   const id = 1;
   const [user, setUser] = useState({
     id: "",
+    uid: "",
     name: "",
     avatar: "",
   });
+  const [selectedButton, setSelectedButton] = useState("men");
 
   // get info user
   const getUser = async () => {
@@ -49,72 +59,110 @@ const Home = () => {
   //test console
   console.log(user);
 
+  // event
+  const handleContinue = () => {
+    console.log("continue");
+  };
+
+  const handleButtonClick = (button) => {
+    setSelectedButton(button);
+  };
+
   return (
     <>
-      <header>
-        <HeaderContainer>
-          <HeaderLeft>
-            Xin chào,
-            <NameUser
-              color="
-#FF5C00"
-            >
-              {user.name}
-            </NameUser>
-          </HeaderLeft>
-          <HeaderRight>
-            <Logo src={user.avatar}></Logo>
-          </HeaderRight>
-        </HeaderContainer>
-      </header>
+      <HomeWrapper>
+        <header>
+          <HeaderContainer>
+            <HeaderLeft>
+              Xin chào,
+              <NameUser
+                color="
+    #FF5C00"
+              >
+                {user.name}
+              </NameUser>
+            </HeaderLeft>
+            <HeaderRight>
+              <Logo src={user.avatar}></Logo>
+            </HeaderRight>
+          </HeaderContainer>
+        </header>
 
-      <BodyWrapper>
-        <ContentBody>
-          Chào mừng đến với Gym Train . Hãy cho chúng tôi biết 1 số thông tin về
-          bạn để có những bài tập phù hợp nhất nhé
-        </ContentBody>
-        <Gender>
-          <GenderTitle>Gender</GenderTitle>
-          <ButtonWrapper>
-            <ButtonMen bg="#0352FE">Nam</ButtonMen>
-            <Button>Nữ</Button>
-          </ButtonWrapper>
-        </Gender>
+        <BodyWrapper>
+          <ContentBody>
+            Chào mừng đến với Gym Train . Hãy cho chúng tôi biết 1 số thông tin
+            về bạn để có những bài tập phù hợp nhất nhé
+          </ContentBody>
+          <Gender>
+            <GenderTitle>Gender</GenderTitle>
 
-        <DetailsBody>
-          <DetailsTittle>Thông số cơ thể</DetailsTittle>
+            <ButtonWrapper>
+              <ButtonMen
+                style={{
+                  backgroundColor: selectedButton === "men" ? "blue" : "",
+                }}
+                onClick={() => handleButtonClick("men")}
+              >
+                Nam
+              </ButtonMen>
+              <Button
+                style={{
+                  backgroundColor: selectedButton === "women" ? "blue" : "",
+                }}
+                onClick={() => handleButtonClick("women")}
+              >
+                Nữ
+              </Button>
+            </ButtonWrapper>
+          </Gender>
 
-          <DobWrapper>
-            <Input type="number" required="required" placeholder="Nhập"
-            ></Input>
-            <Label>
-              Năm sinh <span>*</span>
-            </Label>
-          </DobWrapper>
-          <TallWrapper>
-            <Input type="number" required="required" placeholder="Nhập"
-             pr="45px"
-            ></Input>
-            <Label>
-              Chiều cao <span>*</span>
-            </Label>
-            <Label2>cm</Label2>
-          </TallWrapper>
-          <WeightWrapper>
-            <Input
+          <DetailsBody>
+            <DetailsTittle>Thông số cơ thể</DetailsTittle>
+
+            <DobWrapper>
+              <Input
+                type="number"
+                required="required"
+                placeholder="Nhập"
+              ></Input>
+              <Label>
+                Năm sinh <span>*</span>
+              </Label>
+            </DobWrapper>
+            <TallWrapper>
+              <Input
+                type="number"
+                required="required"
+                placeholder="Nhập"
+                pr="45px"
+              ></Input>
+              <Label>
+                Chiều cao <span>*</span>
+              </Label>
+              <Label2>cm</Label2>
+            </TallWrapper>
+            <WeightWrapper>
+              <Input
                 type="number"
                 required="required"
                 placeholder="Nhập"
                 pr="50px"
-            ></Input>
-            <Label2>kg</Label2>
-            <Label>
-              Cân nặng <span>*</span>
-            </Label>
-            
-          </WeightWrapper>
-        </DetailsBody>
-      </BodyWrapper>
+              ></Input>
+              <Label2>kg</Label2>
+              <Label>
+                Cân nặng <span>*</span>
+              </Label>
+            </WeightWrapper>
+          </DetailsBody>
+        </BodyWrapper>
+        <FooterWrapper>
+          <Link
+            to={`/details/${selectedButton}`}
+          >
+            <ButtonFooter onClick={handleContinue}>Tiếp tục</ButtonFooter>
+          </Link>
+        </FooterWrapper>
+      </HomeWrapper>
     </>
   );
 };

@@ -1,8 +1,15 @@
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+
 const Details = () => {
+    const { gender } = useParams();
+ 
     return (
         <>
-            <h1>Details</h1>
+          <p>{gender}</p>
         </>
     );
 };
+
 export default Details;

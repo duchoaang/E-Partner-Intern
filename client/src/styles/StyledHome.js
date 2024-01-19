@@ -63,8 +63,7 @@ export const BodyWrapper = styled.div`
 `;
 
 export const Gender = styled.div`
-    margin-top:24px;
-   
+  margin-top: 24px;
 `;
 
 export const GenderTitle = styled.h3`
@@ -77,17 +76,16 @@ export const GenderTitle = styled.h3`
   text-align: left;
 `;
 export const DetailsBody = styled.div`
-    margin-top:36px;
-    margin-bottom:22px;
+  margin-top: 36px;
+  margin-bottom: 22px;
 `;
 export const DetailsTittle = styled.h3`
-
   font-size: 24px;
   font-weight: 600;
   line-height: 30px;
   letter-spacing: 0em;
   text-align: left;
-  margin-bottom:22px;
+  margin-bottom: 22px;
 `;
 export const WrapperInput = styled.div`
   width: 382px;
@@ -105,7 +103,7 @@ export const Input = styled.input`
   padding: 10px;
   color: var(--color-text);
   font-size: 32px;
-  font-weight:800;
+  font-weight: 800;
   text-align: right;
   background-color: var(--color-input);
   outline: none;
@@ -141,13 +139,31 @@ export const Label2 = styled(Label)`
   width: 17px;
   height: 18px;
   opacity: 0.7;
-  top:33px;
+  top: 33px;
 
   position: absolute;
   left: 347px;
-  font-weight:600;
+  font-weight: 600;
 `;
 
-export const BodyFooter = styled.div`
-  
+export const HomeWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+export const FooterWrapper = styled.div`
+  background: rgba(39, 39, 39, 0.8);
+
+  box-shadow: 0px -1px 0px 0px #3f3f3f;
+  backdrop-filter: blur(4px);
+  width: 414px;
+  height: 72px;
+  flex-shrink: 0;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  position: fixed;
+  bottom: 0;
 `;
