@@ -9,9 +9,10 @@ export default defineConfig({
         { find: '@c', replacement: path.resolve(__dirname, 'src/components') },
         { find: '@p', replacement: path.resolve(__dirname, 'src/pages') },
         { find: '~', replacement: path.resolve(__dirname, 'src') },
-        { find: '@a', replacement: path.resolve(__dirname, 'src/asset') },
+        { find: '@a', replacement: path.resolve(__dirname, 'src/assets') },
         { find: '@cf', replacement: path.resolve(__dirname, 'src/configs') },
         { find: '@s', replacement: path.resolve(__dirname, 'src/styles') },
+        
     ],
 },
   server:{

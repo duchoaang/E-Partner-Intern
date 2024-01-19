@@ -19,7 +19,7 @@ import {
   Input,
   Label,
   Label2,
-  FooterWrapper,
+  
   HomeWrapper,
 } from "@s/StyledHome";
 import {
@@ -27,6 +27,7 @@ import {
   ButtonWrapper,
   ButtonMen,
   ButtonFooter,
+  FooterWrapper,
 } from "@s/ButtonStyles";
 const Home = () => {
   const id = 1;
@@ -36,7 +37,7 @@ const Home = () => {
     name: "",
     avatar: "",
   });
-  const [selectedButton, setSelectedButton] = useState("men");
+  const [selectedButton, setSelectedButton] = useState("man");
 
   // get info user
   const getUser = async () => {
@@ -99,9 +100,9 @@ const Home = () => {
             <ButtonWrapper>
               <ButtonMen
                 style={{
-                  backgroundColor: selectedButton === "men" ? "blue" : "",
+                  backgroundColor: selectedButton === "man" ? "blue" : "",
                 }}
-                onClick={() => handleButtonClick("men")}
+                onClick={() => handleButtonClick("man")}
               >
                 Nam
               </ButtonMen>

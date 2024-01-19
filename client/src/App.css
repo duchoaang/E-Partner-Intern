@@ -32,4 +32,7 @@ input::placeholder {
     
     font-size: 16px;
   }
-  
+  input[type='date']::-webkit-calendar-picker-indicator {
+    color:red;
+    opacity: 0;
+  }

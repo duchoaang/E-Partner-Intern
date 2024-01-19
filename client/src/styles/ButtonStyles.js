@@ -35,3 +35,19 @@ export const ButtonFooter = styled.button`
   background: linear-gradient(268deg, #ff5c00 0.45%, #ff7a2f 97.59%);
   box-shadow: 0px 0px 15px 0px rgba(255, 110, 29, 0.4);
 `;
+export const FooterWrapper = styled.div`
+  background: rgba(39, 39, 39, 0.8);
+
+  box-shadow: 0px -1px 0px 0px #3f3f3f;
+  backdrop-filter: blur(4px);
+  width: 414px;
+  height: 72px;
+  flex-shrink: 0;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  position: fixed;
+  bottom: 0;
+`;
