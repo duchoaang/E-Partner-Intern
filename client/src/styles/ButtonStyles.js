@@ -67,5 +67,6 @@ border-radius: 50px;
 border: 1px solid #484848;
 background: #3A3A3A;
 color:#fff;
-font-weight:600
+font-weight:600;
+cursor: pointer;
 `;

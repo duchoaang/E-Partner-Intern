@@ -64,6 +64,7 @@ export const Item = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
+  cursor: pointer;
 
   background-size: 250px;
   background-position-x: 50%;
@@ -71,6 +72,27 @@ export const Item = styled.div`
   background-repeat: no-repeat;
   border-radius: 16px;
   margin-right: 6px;
+
+  position: relative;
+
+  
+
+
+
+`;
+export const ItemModal = styled.div`
+    width:100%;
+    height: 100%;
+
+    position:absolute;
+    border-radius: 16px;
+    border: 1px solid #484848;
+    background: linear-gradient(0deg, rgba(253, 91, 0, 0.50) 0%, rgba(253, 91, 0, 0.50) 100%);
+    box-shadow: -2px 4px 30px 0px rgba(0, 0, 0, 0.20);
+    display:none;
+    &.show{
+      display:block
+    }
 `;
 export const ItemLeft = styled.div`
   display: flex;

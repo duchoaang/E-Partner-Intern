@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+// export const fadeIn = `
+//   opacity: 0;
+//   transition: opacity 1s ease-in-out;
+// `;
+
+// export const fadeInActive = `
+//   opacity: 1;
+// `;
 export const ModalWrapper = styled.div`
   display: none;
   position: absolute;
@@ -9,7 +17,12 @@ export const ModalWrapper = styled.div`
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
-
+  animation: fade-in 0.5s;
+  &.show {
+   
+    display: block;
+  }
+  
   &.show {
     display: flex;
   }
@@ -110,3 +123,4 @@ line-height: normal;
 export const SubItemWrapper = styled.ul`
   padding-left:20px;
 `;
+

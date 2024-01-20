@@ -21,6 +21,7 @@ import {
   InputTime,
   TimeDoneItemLeft,
   TimeDoneItemRight,
+  ItemModal,
   Action,
 } from "../../styles/StyledDetails";
 import {
@@ -111,12 +112,8 @@ const ModalDetails = [
     subTitle: "Increase strength",
     bodyTitle:
       "Giai đoạn tăng sức bền cho cơ thể mạnh mẽ hơn, đáp ứng được yêu cầu tập luyện cường độ cao mà còn giúp hình thành trí nhớ cơ bắp.",
-    bodySubTitle: [
-      {
-        header: "Phù hợp:",
-        item: ["Mới bắt đầu tập", "Muốn tăng cân và thể lực"],
-      },
-    ],
+    header: "Phù hợp:",
+    bodySubTitle: ["Mới bắt đầu tập.", " Muốn tăng cân và thể lực."],
   },
   {
     id: 2,
@@ -124,12 +121,8 @@ const ModalDetails = [
     subTitle: "Maintaining",
     bodyTitle:
       "Giai đoạn tập luyện điều độ với cường độ vừa hoặc thấp để giữ cho cơ thể luôn được cân đối và khỏe mạnh. ",
-    bodySubTitle: [
-      {
-        header: "Phù hợp:",
-        item: ["Muốn giữ dáng cân đối.", " Duy trì thể lực."],
-      },
-    ],
+    header: "Phù hợp:",
+    bodySubTitle: ["Muốn giữ dáng cân đối.", " Duy trì thể lực."],
   },
   {
     id: 3,
@@ -137,11 +130,10 @@ const ModalDetails = [
     subTitle: "Bulking",
     bodyTitle:
       "Giai đoạn tăng cơ cho cả quá trình tập luyện. Điều này có nghĩa là người luyện tập cần thực hiện các bài tập có cường độ nặng hơn. Đồng thời kết hợp ăn uống khoa học để tạo điều kiện tối ưu cho sự phát triển và tăng kích thước của cơ bắp.",
+    header: "Phù hợp:",
     bodySubTitle: [
-      {
-        header: "Phù hợp: ",
-        item: ["Tăng kích thước cơ bắp, san chắc ", "Đã tập luyện 1 thời gian", "đã có thể lực và sức bền nhất định"],
-      },
+      "Tăng kích thước cơ bắp, san chắc",
+      " Đã tập luyện 1 thời gian, đã có thể lực và sức bền nhất định.",
     ],
   },
   {
@@ -150,12 +142,8 @@ const ModalDetails = [
     subTitle: "Cutting",
     bodyTitle:
       "Giai đoạn tập luyện cường độ cao kết hợp cùng chế độ ăn kiêng. Bạn sẽ cắt giảm lượng calo nạp vào cơ thể để giảm mỡ nhưng vẫn duy trì được khối lượng cơ, giúp các đường rãnh cơ bắp trở nên rõ ràng hơn.",
-    bodySubTitle: [
-      {
-        header: "Phù hợp:",
-        item: ["Muốn giảm cân, giảm mỡ.", "Sắp thi đấu cần siết cân."],
-      },
-    ],
+    header: "Phù hợp:",
+    bodySubTitle: ["Muốn giảm cân, giảm mỡ.", "Sắp thi đấu cần siết cân."],
   },
 ];
 
@@ -177,28 +165,49 @@ const ManDetails = () => {
               key={index}
               onClick={() => handleShowModal(item.id)}
             >
+              <ItemModal
+                className={showModal && item.id == selectedItemId ? "show" : ""}
+              ></ItemModal>
               <ItemLeft>
                 <Label>{item.label}</Label>
                 <Title>{item.text}</Title>
               </ItemLeft>
               <Action>
                 <ClickAction>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <circle cx="8" cy="8" r="8" fill="#FF5C00" />
-                    <path
-                      d="M4.5 8L7.5 10.5L11.5 6"
-                      stroke="white"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
+                  {showModal && item.id == selectedItemId ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                    >
+                      <circle cx="8" cy="8" r="8" fill="#FF5C00" />
+                      <path
+                        d="M4.5 8L7.5 10.5L11.5 6"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                    >
+                      <circle
+                        cx="8"
+                        cy="8"
+                        r="7.5"
+                        fill="white"
+                        stroke="#939393"
+                      />
+                    </svg>
+                  )}
                 </ClickAction>
                 <HelpAction>
                   <svg
@@ -255,9 +264,7 @@ const ManDetails = () => {
                       <ModalHeader>
                         <ModalTitleWrapper>
                           <ModalTitle>{item.title}</ModalTitle>
-                          <ModalSubTitle>
-                            
-                          </ModalSubTitle>
+                          <ModalSubTitle>{item.subTitle}</ModalSubTitle>
                         </ModalTitleWrapper>
 
                         <CancelIcon onClick={handleShowModal}>
@@ -278,16 +285,13 @@ const ManDetails = () => {
                       </ModalHeader>
 
                       <ModalBody>
-                        <BodyTitle>
-                          Giai đoạn tăng sức bền cho cơ thể mạnh mẽ hơn, đáp ứng
-                          được yêu cầu tập luyện cường độ cao mà còn giúp hình
-                          thành trí nhớ cơ bắp.
-                        </BodyTitle>
+                        <BodyTitle>{item.bodyTitle}</BodyTitle>
                         <BodySubTitle>
-                          <SubHeader>Phù hợp:</SubHeader>
+                          <SubHeader>{item.header}</SubHeader>
                           <SubItemWrapper>
-                            <SubItem>Mới bắt đầu tập </SubItem>
-                            <SubItem>Muốn tăng cân và thể lực</SubItem>
+                            {item.bodySubTitle.map((subItem, index) => (
+                              <SubItem key={index}>{subItem}</SubItem>
+                            ))}
                           </SubItemWrapper>
                         </BodySubTitle>
                       </ModalBody>
@@ -389,34 +393,29 @@ const Modal = ({ show, children }) => {
 
 const Details = () => {
   const { gender } = useParams();
-  const timedone = 30;
+  const [timedone, setTimedone] = useState(0);
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  const handleChangeTime = (value, inputType) => {
-    if (value.length <= 10) {
-      if (value.length === 2) {
-        value += ".";
-      } else if (value.length === 5) {
-        value += ".";
-      }
-      if (inputType === "start") {
-        setStartDate(value);
-      } else if (inputType === "end") {
-        setEndDate(value);
-      }
+  useEffect(() => {
+    // Calculate the difference between start and end dates when either of them changes
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      console.log(end.getTime())
+      const differenceInTime = end.getTime() - start.getTime();
+      const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+      setTimedone(differenceInDays);
     }
+  }, [startDate, endDate]);
+
+  const handleStartDateChange = (event) => {
+    setStartDate(event.target.value);
   };
-  const handleKeyDown = (e, inputType) => {
-    if (e.key === "Delete" || e.key === "Backspace") {
-      if (inputType === "start") {
-        setStartDate((prevValue) => prevValue.slice(0, -1));
-      } else if (inputType === "end") {
-        setEndDate((prevValue) => prevValue.slice(0, -1));
-      }
-    } else {
-    }
+
+  const handleEndDateChange = (event) => {
+    setEndDate(event.target.value);
   };
 
   return (
@@ -433,21 +432,28 @@ const Details = () => {
             Tổng số ngày <span>{timedone}</span>
           </TimeDoneSubTitle>
         </TimeDoneWrapper>
-        <TimeDoneItem>
-          <TimeDoneItemLeft>
-            <ItemLabel>Ngày bắt đầu</ItemLabel>
-            <InputTime
-              type="text"
-              value={startDate}
-              onChange={(e) => handleChangeTime(e.target.value, "start")}
-              onKeyDown={(e) => handleKeyDown(e, "start")}
-            />
-          </TimeDoneItemLeft>
-          <TimeDoneItemRight>
-            <ItemLabel>Ngày kết thúc</ItemLabel>
-            <InputTime type="date" placeholder="dd/mm/yyyy" />
-          </TimeDoneItemRight>
-        </TimeDoneItem>
+       <TimeDoneItem>
+        <TimeDoneItemLeft>
+          <ItemLabel>Ngày bắt đầu</ItemLabel>
+          <InputTime
+            type="date"
+            placeholder="dd/mm/yyyy"
+            value={startDate}
+            onChange={handleStartDateChange}
+            min="1997-01-01" max="2030-12-31"
+          />
+        </TimeDoneItemLeft>
+        <TimeDoneItemRight>
+          <ItemLabel>Ngày kết thúc</ItemLabel>
+          <InputTime
+            type="date"
+            placeholder="dd/mm/yyyy"
+            value={endDate}
+            min="1997-01-01" max="2030-12-31"
+            onChange={handleEndDateChange}
+          />
+        </TimeDoneItemRight>
+      </TimeDoneItem>
       </DetailsWrapper>
       <FooterWrapper>
         <Link to={`/details`}>

@@ -1,17 +1,15 @@
-
-
 * {
-    margin: 0;
-    padding: 0;
+    margin    : 0;
+    padding   : 0;
     box-sizing: border-box;
- 
+
 }
 
 :root {
- --bg-color:  #272727;
- --text-color: #FFFFFF;
- --color-input: #3A3A3A;
- --text-mobile: 14px;
+    --bg-color   : #272727;
+    --text-color : #FFFFFF;
+    --color-input: #3A3A3A;
+    --text-mobile: 14px;
 }
 
 
@@ -23,14 +21,24 @@ a {
     text-decoration: none;
 }
 
-ul {
-    
-}
+ul {}
+
 input::placeholder {
-    
+
     font-size: 16px;
-  }
-  input[type='date']::-webkit-calendar-picker-indicator {
-    color:red;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+    color  : red;
     opacity: 0;
-  }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100;
+    }
+}
