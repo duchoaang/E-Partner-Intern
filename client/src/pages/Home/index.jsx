@@ -29,33 +29,36 @@ import {
   ButtonFooter,
   FooterWrapper,
 } from "@s/ButtonStyles";
+import avt from "../../assets/ImageMen/avt.png";
+
+
 const Home = () => {
   const id = 1;
   const [user, setUser] = useState({
-    id: "",
+    id: 1,
     uid: "",
-    name: "",
-    avatar: "",
+    name: "Triển phạm",
+    avatar: avt,
   });
   const [selectedButton, setSelectedButton] = useState("man");
 
   // get info user
-  const getUser = async () => {
-    console.log(12302);
-    try {
-      const url = endpoints.user_by_id(id);
-      const res = await APIs.get(url);
-      if (res.status === 200) {
-        setUser(res.data);
-      }
-    } catch (ex) {
-      console.error(ex);
-    }
-  };
+  // const getUser = async () => {
+  //   console.log(12302);
+  //   try {
+  //     const url = endpoints.user_by_id(id);
+  //     const res = await APIs.get(url);
+  //     if (res.status === 200) {
+  //       setUser(res.data);
+  //     }
+  //   } catch (ex) {
+  //     console.error(ex);
+  //   }
+  // };
   // do work
-  useEffect(() => {
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
 
   //test console
   console.log(user);
@@ -83,7 +86,7 @@ const Home = () => {
               </NameUser>
             </HeaderLeft>
             <HeaderRight>
-              <Logo src={user.avatar}></Logo>
+              <Logo bgImage={user.avatar}></Logo>
             </HeaderRight>
           </HeaderContainer>
         </header>

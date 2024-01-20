@@ -17,7 +17,10 @@ export const HeaderRight = styled.div`
   padding: 10px 10px;
 `;
 
-export const Logo = styled.img`
+export const Logo = styled.div`
+  background-image: url(${(props) => props.bgImage});
+  background-size:cover;
+  background-position:50%;
   @media (max-width: 414px) {
     width: 36px;
     height: 36px;

@@ -71,13 +71,13 @@ const itemsForMan = [
     img: pic2,
   },
   {
-    id: "3",
+    id: "4",
     label: "Diet",
     text: "Giữ cân, giữ cơ",
     img: pic3,
   },
   {
-    id: "4",
+    id: "3",
     label: "Cutting",
     text: "Tăng cân, tăng cơ",
     img: pic4,
@@ -85,21 +85,25 @@ const itemsForMan = [
 ];
 const itemsForWomen = [
   {
+    id: "1",
     label: "Strength",
     text: "Tăng thể lực",
     img: pic5,
   },
   {
+    id: "2",
     label: "Maintaining",
     text: "Giữ cân, giữ cơ",
     img: pic6,
   },
   {
+    id: "4",
     label: "Diet",
     text: "Giữ cân, giữ cơ",
     img: pic7,
   },
   {
+    id: "3",
     label: "Cutting",
     text: "Tăng cân, tăng cơ",
     img: pic8,
@@ -159,6 +163,168 @@ const ManDetails = () => {
     <>
       <ItemWrapper>
         {itemsForMan.map((item, index) => {
+          return (
+            <Item
+              bgImage={item.img}
+              key={index}
+            
+            >
+              <ItemModal
+                className={showModal && item.id == selectedItemId ? "show" : ""}
+              ></ItemModal>
+              <ItemLeft>
+                <Label>{item.label}</Label>
+                <Title>{item.text}</Title>
+              </ItemLeft>
+              <Action>
+                <ClickAction>
+                  {showModal && item.id == selectedItemId ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                    >
+                      <circle cx="8" cy="8" r="8" fill="#FF5C00" />
+                      <path
+                        d="M4.5 8L7.5 10.5L11.5 6"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                    >
+                      <circle
+                        cx="8"
+                        cy="8"
+                        r="7.5"
+                        fill="white"
+                        stroke="#939393"
+                      />
+                    </svg>
+                  )}
+                </ClickAction>
+                <HelpAction   onClick={() => handleShowModal(item.id)}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                  >
+                    <g clip-path="url(#clip0_14_66)">
+                      <path
+                        d="M8.00001 14.6667C11.6819 14.6667 14.6667 11.6819 14.6667 7.99999C14.6667 4.3181 11.6819 1.33333 8.00001 1.33333C4.31811 1.33333 1.33334 4.3181 1.33334 7.99999C1.33334 11.6819 4.31811 14.6667 8.00001 14.6667Z"
+                        stroke="white"
+                        stroke-opacity="0.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M6.06 6C6.21673 5.55444 6.5261 5.17874 6.9333 4.93942C7.3405 4.7001 7.81926 4.61262 8.28478 4.69247C8.7503 4.77232 9.17254 5.01435 9.47672 5.37568C9.78089 5.73702 9.94737 6.19435 9.94666 6.66667C9.94666 8 7.94666 8.66667 7.94666 8.66667V9.5"
+                        stroke="white"
+                        stroke-opacity="0.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M8 11.3333H8.0075"
+                        stroke="white"
+                        stroke-opacity="0.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_14_66">
+                        <rect width="16" height="16" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </HelpAction>
+              </Action>
+            </Item>
+          );
+        })}
+      </ItemWrapper>
+
+      <Modal show={showModal}>
+        {selectedItemId !== null && (
+          <>
+            {ModalDetails.map((item, index) => {
+              if (item.id == selectedItemId) {
+                return (
+                  <>
+                    <ModalInner>
+                      <ModalHeader>
+                        <ModalTitleWrapper>
+                          <ModalTitle>{item.title}</ModalTitle>
+                          <ModalSubTitle>{item.subTitle}</ModalSubTitle>
+                        </ModalTitleWrapper>
+
+                        <CancelIcon onClick={handleShowModal}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            x="0px"
+                            y="0px"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 50 50"
+                          >
+                            <path
+                              fill="#FFFFFF"
+                              d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"
+                            ></path>
+                          </svg>
+                        </CancelIcon>
+                      </ModalHeader>
+
+                      <ModalBody>
+                        <BodyTitle>{item.bodyTitle}</BodyTitle>
+                        <BodySubTitle>
+                          <SubHeader>{item.header}</SubHeader>
+                          <SubItemWrapper>
+                            {item.bodySubTitle.map((subItem, index) => (
+                              <SubItem key={index}>{subItem}</SubItem>
+                            ))}
+                          </SubItemWrapper>
+                        </BodySubTitle>
+                      </ModalBody>
+                      <ButtonCancel onClick={handleShowModal}>
+                        Đóng
+                      </ButtonCancel>
+                    </ModalInner>
+                  </>
+                );
+              }
+            })}
+          </>
+        )}
+      </Modal>
+    </>
+  );
+};
+const WomanDetails = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedItemId, setSelectedItemId] = useState(null);
+  //event
+  const handleShowModal = (id) => {
+    setShowModal(!showModal);
+    setSelectedItemId(id);
+  };
+  return (
+    <>
+      <ItemWrapper>
+        {itemsForWomen.map((item, index) => {
           return (
             <Item
               bgImage={item.img}
@@ -309,101 +475,39 @@ const ManDetails = () => {
     </>
   );
 };
-const WomanDetails = () => {
-  return (
-    <>
-      <ItemWrapper>
-        {itemsForWomen.map((item, index) => {
-          return (
-            <Item bgImage={item.img} key={index}>
-              <ItemLeft>
-                <Label>{item.label}</Label>
-                <Title>{item.text}</Title>
-              </ItemLeft>
-              <Action>
-                <ClickAction>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <circle cx="8" cy="8" r="8" fill="#FF5C00" />
-                    <path
-                      d="M4.5 8L7.5 10.5L11.5 6"
-                      stroke="white"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </ClickAction>
-                <HelpAction>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <g clip-path="url(#clip0_14_66)">
-                      <path
-                        d="M8.00001 14.6667C11.6819 14.6667 14.6667 11.6819 14.6667 7.99999C14.6667 4.3181 11.6819 1.33333 8.00001 1.33333C4.31811 1.33333 1.33334 4.3181 1.33334 7.99999C1.33334 11.6819 4.31811 14.6667 8.00001 14.6667Z"
-                        stroke="white"
-                        stroke-opacity="0.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M6.06 6C6.21673 5.55444 6.5261 5.17874 6.9333 4.93942C7.3405 4.7001 7.81926 4.61262 8.28478 4.69247C8.7503 4.77232 9.17254 5.01435 9.47672 5.37568C9.78089 5.73702 9.94737 6.19435 9.94666 6.66667C9.94666 8 7.94666 8.66667 7.94666 8.66667V9.5"
-                        stroke="white"
-                        stroke-opacity="0.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M8 11.3333H8.0075"
-                        stroke="white"
-                        stroke-opacity="0.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_14_66">
-                        <rect width="16" height="16" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </HelpAction>
-              </Action>
-            </Item>
-          );
-        })}
-      </ItemWrapper>
-    </>
-  );
-};
 
 const Modal = ({ show, children }) => {
-  console.log(show);
+
   return <ModalWrapper className={show ? "show" : ""}>{children}</ModalWrapper>;
 };
 
 const Details = () => {
   const { gender } = useParams();
   const [timedone, setTimedone] = useState(0);
+  const getCurrentDate = () => {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    const day = String(currentDate.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+  const [startDate, setStartDate] = useState(getCurrentDate());
+  const [endDate, setEndDate] = useState(getCurrentDate());
 
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [modelAPI, setModelAPI] = useState({
+    gender: gender,
+    startDate: startDate,
+    endDate: endDate,
+  });
+
+  console.log(modelAPI);
 
   useEffect(() => {
-    // Calculate the difference between start and end dates when either of them changes
+
     if (startDate && endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);
-      console.log(end.getTime())
+
       const differenceInTime = end.getTime() - start.getTime();
       const differenceInDays = differenceInTime / (1000 * 3600 * 24);
       setTimedone(differenceInDays);
@@ -432,28 +536,31 @@ const Details = () => {
             Tổng số ngày <span>{timedone}</span>
           </TimeDoneSubTitle>
         </TimeDoneWrapper>
-       <TimeDoneItem>
-        <TimeDoneItemLeft>
-          <ItemLabel>Ngày bắt đầu</ItemLabel>
-          <InputTime
-            type="date"
-            placeholder="dd/mm/yyyy"
-            value={startDate}
-            onChange={handleStartDateChange}
-            min="1997-01-01" max="2030-12-31"
-          />
-        </TimeDoneItemLeft>
-        <TimeDoneItemRight>
-          <ItemLabel>Ngày kết thúc</ItemLabel>
-          <InputTime
-            type="date"
-            placeholder="dd/mm/yyyy"
-            value={endDate}
-            min="1997-01-01" max="2030-12-31"
-            onChange={handleEndDateChange}
-          />
-        </TimeDoneItemRight>
-      </TimeDoneItem>
+        <TimeDoneItem>
+          <TimeDoneItemLeft>
+            <ItemLabel>Ngày bắt đầu</ItemLabel>
+            <InputTime
+              type="date"
+              placeholder="dd/mm/yyyy"
+              value={startDate}
+              onChange={handleStartDateChange}
+              min="1997-01-01"
+              max="2030-12-31"
+            />
+          </TimeDoneItemLeft>
+          <TimeDoneItemRight>
+            <ItemLabel>Ngày kết thúc</ItemLabel>
+            <InputTime
+              type="date"
+              placeholder="dd/mm/yyyy"
+              value={endDate}
+              min="1997-01-01"
+              max="2030-12-31"
+              onChange={handleEndDateChange}
+              id="date_timepicker_end"
+            />
+          </TimeDoneItemRight>
+        </TimeDoneItem>
       </DetailsWrapper>
       <FooterWrapper>
         <Link to={`/details`}>
