@@ -1,5 +1,5 @@
 import APIs, { endpoints } from "@cf/APIs";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
   HeaderContainer,
@@ -30,16 +30,22 @@ import {
   FooterWrapper,
 } from "@s/ButtonStyles";
 import avt from "../../assets/ImageMen/avt.png";
-
+import { UserContext } from '@c/UserContext';
 
 const Home = () => {
   const id = 1;
+  const dataUser = useContext(UserContext);
+  console.log(dataUser);
   const [user, setUser] = useState({
-    id: 1,
-    uid: "",
-    name: "Triển phạm",
-    avatar: avt,
+    id:"",
+    name:"",
+    avt:""
   });
+ 
+  useEffect(() => {
+    setUser(dataUser);
+  }, []);
+
   const [selectedButton, setSelectedButton] = useState("man");
 
   // get info user
@@ -61,7 +67,7 @@ const Home = () => {
   // }, []);
 
   //test console
-  console.log(user);
+
 
   // event
   const handleContinue = () => {
