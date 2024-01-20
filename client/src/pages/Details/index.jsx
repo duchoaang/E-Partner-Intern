@@ -24,11 +24,29 @@ import {
   Action,
 } from "../../styles/StyledDetails";
 import {
-    Button,
-    ButtonWrapper,
-    ButtonMen,
-    ButtonFooter, FooterWrapper,
-  } from "@s/ButtonStyles";
+  Button,
+  ButtonWrapper,
+  ButtonMen,
+  ButtonFooter,
+  FooterWrapper,
+  CancelIcon,
+  ButtonCancel,
+} from "@s/ButtonStyles";
+import {
+  ModalWrapper,
+  ModalInner,
+  ModalHeader,
+  ModalTitleWrapper,
+  ModalSubTitle,
+  ModalTitle,
+  ModalBody,
+  BodyTitle,
+  BodySubTitle,
+  SubHeader,
+  SubItem,
+  SubItemWrapper,
+} from "@s/ModalStyles";
+
 import pic1 from "@a/ImageMen/pic1.png";
 import pic2 from "@a/ImageMen/pic2.png";
 import pic3 from "@a/ImageMen/pic3.png";
@@ -37,23 +55,28 @@ import pic5 from "@a/ImageWomen/pic1.png";
 import pic6 from "@a/ImageWomen/pic2.png";
 import pic7 from "@a/ImageWomen/pic3.png";
 import pic8 from "@a/ImageWomen/pic4.png";
+
 const itemsForMan = [
   {
+    id: "1",
     label: "increase strength",
     text: "Tăng thể lực",
     img: pic1,
   },
   {
+    id: "2",
     label: "Maintaining",
     text: "Giữ cân, giữ cơ",
     img: pic2,
   },
   {
+    id: "3",
     label: "Diet",
     text: "Giữ cân, giữ cơ",
     img: pic3,
   },
   {
+    id: "4",
     label: "Cutting",
     text: "Tăng cân, tăng cơ",
     img: pic4,
@@ -81,13 +104,79 @@ const itemsForWomen = [
     img: pic8,
   },
 ];
+const ModalDetails = [
+  {
+    id: 1,
+    title: "Tăng thể lực",
+    subTitle: "Increase strength",
+    bodyTitle:
+      "Giai đoạn tăng sức bền cho cơ thể mạnh mẽ hơn, đáp ứng được yêu cầu tập luyện cường độ cao mà còn giúp hình thành trí nhớ cơ bắp.",
+    bodySubTitle: [
+      {
+        header: "Phù hợp:",
+        item: ["Mới bắt đầu tập", "Muốn tăng cân và thể lực"],
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Giữ cân, giữ cơ",
+    subTitle: "Maintaining",
+    bodyTitle:
+      "Giai đoạn tập luyện điều độ với cường độ vừa hoặc thấp để giữ cho cơ thể luôn được cân đối và khỏe mạnh. ",
+    bodySubTitle: [
+      {
+        header: "Phù hợp:",
+        item: ["Muốn giữ dáng cân đối.", " Duy trì thể lực."],
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Tăng cân, tăng cơ",
+    subTitle: "Bulking",
+    bodyTitle:
+      "Giai đoạn tăng cơ cho cả quá trình tập luyện. Điều này có nghĩa là người luyện tập cần thực hiện các bài tập có cường độ nặng hơn. Đồng thời kết hợp ăn uống khoa học để tạo điều kiện tối ưu cho sự phát triển và tăng kích thước của cơ bắp.",
+    bodySubTitle: [
+      {
+        header: "Phù hợp: ",
+        item: ["Tăng kích thước cơ bắp, san chắc ", "Đã tập luyện 1 thời gian", "đã có thể lực và sức bền nhất định"],
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Giảm cân, giữ cơ",
+    subTitle: "Cutting",
+    bodyTitle:
+      "Giai đoạn tập luyện cường độ cao kết hợp cùng chế độ ăn kiêng. Bạn sẽ cắt giảm lượng calo nạp vào cơ thể để giảm mỡ nhưng vẫn duy trì được khối lượng cơ, giúp các đường rãnh cơ bắp trở nên rõ ràng hơn.",
+    bodySubTitle: [
+      {
+        header: "Phù hợp:",
+        item: ["Muốn giảm cân, giảm mỡ.", "Sắp thi đấu cần siết cân."],
+      },
+    ],
+  },
+];
+
 const ManDetails = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedItemId, setSelectedItemId] = useState(null);
+  //event
+  const handleShowModal = (id) => {
+    setShowModal(!showModal);
+    setSelectedItemId(id);
+  };
   return (
     <>
       <ItemWrapper>
         {itemsForMan.map((item, index) => {
           return (
-            <Item bgImage={item.img} key={index}>
+            <Item
+              bgImage={item.img}
+              key={index}
+              onClick={() => handleShowModal(item.id)}
+            >
               <ItemLeft>
                 <Label>{item.label}</Label>
                 <Title>{item.text}</Title>
@@ -154,6 +243,65 @@ const ManDetails = () => {
           );
         })}
       </ItemWrapper>
+
+      <Modal show={showModal}>
+        {selectedItemId !== null && (
+          <>
+            {ModalDetails.map((item, index) => {
+              if (item.id == selectedItemId) {
+                return (
+                  <>
+                    <ModalInner>
+                      <ModalHeader>
+                        <ModalTitleWrapper>
+                          <ModalTitle>{item.title}</ModalTitle>
+                          <ModalSubTitle>
+                            
+                          </ModalSubTitle>
+                        </ModalTitleWrapper>
+
+                        <CancelIcon onClick={handleShowModal}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            x="0px"
+                            y="0px"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 50 50"
+                          >
+                            <path
+                              fill="#FFFFFF"
+                              d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"
+                            ></path>
+                          </svg>
+                        </CancelIcon>
+                      </ModalHeader>
+
+                      <ModalBody>
+                        <BodyTitle>
+                          Giai đoạn tăng sức bền cho cơ thể mạnh mẽ hơn, đáp ứng
+                          được yêu cầu tập luyện cường độ cao mà còn giúp hình
+                          thành trí nhớ cơ bắp.
+                        </BodyTitle>
+                        <BodySubTitle>
+                          <SubHeader>Phù hợp:</SubHeader>
+                          <SubItemWrapper>
+                            <SubItem>Mới bắt đầu tập </SubItem>
+                            <SubItem>Muốn tăng cân và thể lực</SubItem>
+                          </SubItemWrapper>
+                        </BodySubTitle>
+                      </ModalBody>
+                      <ButtonCancel onClick={handleShowModal}>
+                        Đóng
+                      </ButtonCancel>
+                    </ModalInner>
+                  </>
+                );
+              }
+            })}
+          </>
+        )}
+      </Modal>
     </>
   );
 };
@@ -233,7 +381,11 @@ const WomanDetails = () => {
     </>
   );
 };
-console.log(pic1);
+
+const Modal = ({ show, children }) => {
+  console.log(show);
+  return <ModalWrapper className={show ? "show" : ""}>{children}</ModalWrapper>;
+};
 
 const Details = () => {
   const { gender } = useParams();
@@ -242,25 +394,19 @@ const Details = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  
-
   const handleChangeTime = (value, inputType) => {
-     
-        if (value.length <= 10) {
-            if (value.length === 2) {
-   
-                value += ".";
-              } else if (value.length === 5) {
-             
-                value += ".";
-              }
-              if (inputType === "start") {
-                setStartDate(value);
-              } else if (inputType === "end") {
-                setEndDate(value);
-              }
-        }
-    
+    if (value.length <= 10) {
+      if (value.length === 2) {
+        value += ".";
+      } else if (value.length === 5) {
+        value += ".";
+      }
+      if (inputType === "start") {
+        setStartDate(value);
+      } else if (inputType === "end") {
+        setEndDate(value);
+      }
+    }
   };
   const handleKeyDown = (e, inputType) => {
     if (e.key === "Delete" || e.key === "Backspace") {
@@ -270,10 +416,8 @@ const Details = () => {
         setEndDate((prevValue) => prevValue.slice(0, -1));
       }
     } else {
-    
     }
   };
-  
 
   return (
     <>
@@ -295,26 +439,21 @@ const Details = () => {
             <InputTime
               type="text"
               value={startDate}
-              onChange={(e) => handleChangeTime(e.target.value, 'start')}
+              onChange={(e) => handleChangeTime(e.target.value, "start")}
               onKeyDown={(e) => handleKeyDown(e, "start")}
             />
           </TimeDoneItemLeft>
           <TimeDoneItemRight>
             <ItemLabel>Ngày kết thúc</ItemLabel>
-            <InputTime
-              type="date"
-              placeholder="dd/mm/yyyy"
-            />
+            <InputTime type="date" placeholder="dd/mm/yyyy" />
           </TimeDoneItemRight>
         </TimeDoneItem>
       </DetailsWrapper>
       <FooterWrapper>
-          <Link
-            to={`/details`}
-          >
-            <ButtonFooter >Tiếp tục</ButtonFooter>
-          </Link>
-        </FooterWrapper>
+        <Link to={`/details`}>
+          <ButtonFooter>Tiếp tục</ButtonFooter>
+        </Link>
+      </FooterWrapper>
     </>
   );
 };

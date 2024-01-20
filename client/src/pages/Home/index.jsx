@@ -77,8 +77,7 @@ const Home = () => {
             <HeaderLeft>
               Xin chào,
               <NameUser
-                color="
-    #FF5C00"
+                color="#FF5C00"
               >
                 {user.name}
               </NameUser>

@@ -51,3 +51,21 @@ export const FooterWrapper = styled.div`
   position: fixed;
   bottom: 0;
 `;
+
+export const CancelIcon = styled.div`
+ 
+  cursor: pointer;
+  .svg{
+    color:#fff;
+  }
+`;
+export const ButtonCancel = styled.button`
+  width: 117px;
+height: 42px;
+flex-shrink: 0;
+border-radius: 50px;
+border: 1px solid #484848;
+background: #3A3A3A;
+color:#fff;
+font-weight:600
+`;
