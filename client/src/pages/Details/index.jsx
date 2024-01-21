@@ -190,9 +190,9 @@ const ManDetails = () => {
                       <path
                         d="M4.5 8L7.5 10.5L11.5 6"
                         stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                     </svg>
                   ) : (
@@ -221,27 +221,27 @@ const ManDetails = () => {
                     viewBox="0 0 16 16"
                     fill="none"
                   >
-                    <g clip-path="url(#clip0_14_66)">
+                    <g clipPath="url(#clip0_14_66)">
                       <path
                         d="M8.00001 14.6667C11.6819 14.6667 14.6667 11.6819 14.6667 7.99999C14.6667 4.3181 11.6819 1.33333 8.00001 1.33333C4.31811 1.33333 1.33334 4.3181 1.33334 7.99999C1.33334 11.6819 4.31811 14.6667 8.00001 14.6667Z"
                         stroke="white"
-                        stroke-opacity="0.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeOpacity="0.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M6.06 6C6.21673 5.55444 6.5261 5.17874 6.9333 4.93942C7.3405 4.7001 7.81926 4.61262 8.28478 4.69247C8.7503 4.77232 9.17254 5.01435 9.47672 5.37568C9.78089 5.73702 9.94737 6.19435 9.94666 6.66667C9.94666 8 7.94666 8.66667 7.94666 8.66667V9.5"
                         stroke="white"
-                        stroke-opacity="0.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeOpacity="0.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M8 11.3333H8.0075"
                         stroke="white"
-                        stroke-opacity="0.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeOpacity="0.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                     </g>
                     <defs>
@@ -260,7 +260,7 @@ const ManDetails = () => {
       <Modal show={showModal}>
         {selectedItemId !== null && (
           <>
-            {ModalDetails.map((item, index) => {
+            {ModalDetails.map((item) => {
               if (item.id == selectedItemId) {
                 return (
                   <>
@@ -352,9 +352,9 @@ const WomanDetails = () => {
                       <path
                         d="M4.5 8L7.5 10.5L11.5 6"
                         stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                     </svg>
                   ) : (
@@ -383,27 +383,27 @@ const WomanDetails = () => {
                     viewBox="0 0 16 16"
                     fill="none"
                   >
-                    <g clip-path="url(#clip0_14_66)">
+                    <g clipPath="url(#clip0_14_66)">
                       <path
                         d="M8.00001 14.6667C11.6819 14.6667 14.6667 11.6819 14.6667 7.99999C14.6667 4.3181 11.6819 1.33333 8.00001 1.33333C4.31811 1.33333 1.33334 4.3181 1.33334 7.99999C1.33334 11.6819 4.31811 14.6667 8.00001 14.6667Z"
                         stroke="white"
-                        stroke-opacity="0.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeOpacity="0.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M6.06 6C6.21673 5.55444 6.5261 5.17874 6.9333 4.93942C7.3405 4.7001 7.81926 4.61262 8.28478 4.69247C8.7503 4.77232 9.17254 5.01435 9.47672 5.37568C9.78089 5.73702 9.94737 6.19435 9.94666 6.66667C9.94666 8 7.94666 8.66667 7.94666 8.66667V9.5"
                         stroke="white"
-                        stroke-opacity="0.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeOpacity="0.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M8 11.3333H8.0075"
                         stroke="white"
-                        stroke-opacity="0.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeOpacity="0.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                     </g>
                     <defs>
@@ -563,8 +563,8 @@ const Details = () => {
         </TimeDoneItem>
       </DetailsWrapper>
       <FooterWrapper>
-        <Link to={`/details`}>
-          <ButtonFooter>Tiếp tục</ButtonFooter>
+        <Link to={`/plan`}>
+          <ButtonFooter>Lên kế hoạch luyện tập</ButtonFooter>
         </Link>
       </FooterWrapper>
     </>

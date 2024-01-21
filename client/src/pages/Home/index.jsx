@@ -1,4 +1,4 @@
-import APIs, { endpoints } from "@cf/APIs";
+
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -29,11 +29,11 @@ import {
   ButtonFooter,
   FooterWrapper,
 } from "@s/ButtonStyles";
-import avt from "../../assets/ImageMen/avt.png";
+
 import { UserContext } from '@c/UserContext';
 
 const Home = () => {
-  const id = 1;
+
   const dataUser = useContext(UserContext);
   console.log(dataUser);
   const [user, setUser] = useState({

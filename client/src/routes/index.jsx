@@ -1,5 +1,6 @@
 import Home from '@p/Home';
 import Details from '@p/Details';
+import Plan from '@p/Plan';
 const publicRoutes = [
     {
         path: '/',
@@ -8,6 +9,10 @@ const publicRoutes = [
     {
         path: '/details/:gender',
         component: Details
+    },
+    {
+        path: '/plan',
+        component: Plan
     },
    
 ]
